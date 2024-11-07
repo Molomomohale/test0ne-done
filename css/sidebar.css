@@ -1,0 +1,350 @@
+*{
+	margin: 0; 
+	padding: 0; 
+	box-sizing: border-box;
+	font-family: "Inter", sans-serif;
+
+}
+body{
+	background-color: floralwhite;
+}
+.container{
+	display: flex;
+	margin: 10px;
+	/*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);*/
+}
+.sidebar{
+	position: relative;
+	width: 200px;
+	height: 120vh;
+	flex-direction: column;
+	gap: 20px;
+	background: #16a085;
+	padding: 20px;
+	border-radius: 25px;
+	transition: width 0.3s; /* Add transition for smooth toggling */
+}
+.sidebar .head{
+	display: flex; 
+	gap: 20px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #f6f6f6;
+}
+.user-img{
+	width: 44px; 
+	height: 44px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.user-img img{
+	width: 100%;
+    object-fit: cover;	
+}
+.user-details .title{
+	font-size: 12px;
+	font-weight: 500;
+	color: #757575;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+.user-details .name{
+	font-size: 18px;
+	font-weight: 500;
+}
+.menu:not(:last-child){
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #777;
+}
+.menu .title{
+	font-size: 14px;
+	font-weight: 500;
+	color: #555;
+	margin-bottom: 5px;
+}
+.menu ul li{
+	position: relative;
+	list-style: none;
+	margin-bottom: 5px;
+}
+.menu ul li a{
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #f1f1f1;
+	text-decoration: none;
+	padding: 12px 8px;	
+	border-radius: 7px;
+	transition: all 0.3s;
+}
+.menu ul li a:hover, .menu ul li.actives a{
+	color: #f6f6f6;
+	background: #111;
+}
+.menu ul li .text{
+	flex: 1;
+}
+.menu ul li .fa-angle-down{
+	font-size: 20px;
+	transition: all 0.3s;
+}
+
+.dropdown {
+	margin-left: 20px;
+	padding-left: 18px;
+	padding-top: 5px;
+	border-left: 1px solid #111;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease-out, padding 0.8s ease-out;
+    padding: 0 20px; /* Add padding to match main menu */
+}
+
+.dropdown li {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.dropdown.show {
+    max-height: 300px; /* Set a max-height for the animation */
+    padding: 10px 15px; /* Adjust padding for visibility */
+}
+
+.dropdown.show li {
+    opacity: 1;
+}
+.menu-btn{
+	position: absolute;
+	right: -5px;
+	top: 5%;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+	border-radius: 7px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #f6f6f6;
+	background-color: #444;
+}
+.menu-btn:hover{
+	color: seagreen;
+	background: #f6f6f6;
+}
+.menu-btn i{
+	transition: all 0.3s;
+}
+
+/************collapse*****************/
+.sidebar.collapsed {
+	width: 80px; /* Collapsed width */
+}
+.sidebar.collapsed .menu-btn i{
+	transform: rotate(180deg );
+}
+
+.sidebar.collapsed .user-details
+{
+	display: none; /* Hide user details and nav items when collapsed */
+}
+.sidebar.collapsed .menu-btn {
+	justify-content: center; /* Center the button when collapsed */
+}
+
+.menu-btn {
+	cursor: pointer;
+}
+
+.user-img img {
+	width: 100%; /* Responsive image */
+	border-radius: 50%; /* Circular image */
+}
+.sidebar.collapsed .menu .title{
+	text-align: center;
+}
+.sidebar.collapsed .menu ul li .fa-angle-down{
+	display: none;
+}
+.sidebar.collapsed .menu > ul > li > a {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+		
+.sidebar.collapsed .menu > ul > li > a .text{
+	position: absolute; 
+	left: 60px;
+	top: 50%;
+	transform: translatey(-50%);
+	padding: 10px;
+	border-radius: 4px;
+	color: #fff;
+	background: #111;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s;
+}
+.sidebar.collapsed .menu > ul > li > a .text::after{
+	content: "";
+	position: absolute;
+	left: -5px;
+	top: 25%;
+	width: 15px;
+	height: 15px;
+	background: #111;
+	transform: rotate(45deg);
+	z-index: -1;
+}
+
+.sidebar.collapsed .menu > ul > li > a:hover .text{
+	left: 50px;
+	opacity: 1;
+	visibility: visible;
+}
+.sidebar.collapsed .menu .dropdown{
+	position: absolute;
+	top: 0;
+	left: 20px;
+	width: 200px;
+	border-radius: 10px;
+	padding: 10px 20px;
+
+}
+/******container-content******************/
+.section-container{
+	width: 100%;
+}
+.section-container h2{
+	color: #555;
+	text-align: center;
+}
+.section-container img{
+	width: 120px;
+	height: 100px;
+	margin: 10px 10px;
+}
+.container-content{
+	width: 100%;
+	margin: 20px auto;
+	display: flex;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.feed-content{
+	margin: 10px 20px;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	border-radius: 7px;
+
+}
+
+.feed-content img{
+	width: 60%;
+	height: 200px;
+}
+
+.feed-content .feeds-results{
+	width: 100%;
+	margin: auto;
+	padding: 10px;
+	text-align: center;
+}
+
+@media(max-width:991px) {
+	.section-container{
+		width: 100%;
+	}
+	.section-container h2{
+		font-size: 14px;
+		font-weight: 600;
+	}
+	.container-content{
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		width: 100%;
+		box-shadow: none;
+	}
+	.feed-content .feeds-results{
+		width: 90%;
+		margin-right: 4rem;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+	}
+	.feed-content img{
+		width: 90%;
+		height: 160px;
+		margin: 10px;
+	}
+	.section-container h2 img{
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+	}
+	.sidebar{
+		height: auto;
+	}
+	/*.sidebar.active{
+		width: 80px;
+	}
+	.sidebar.active .menu-btn i{
+		transform: rotate(180deg );
+	}
+	.sidebar.active .user-details{
+		display: none;
+	}
+	.sidebar.active .menu .title{
+		text-align: center;
+	}
+	.sidebar.active .menu ul li .fa-angle-down{
+		display: none;
+	}
+	.sidebar.active .menu > ul > li > a {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.sidebar.active .menu > ul > li > a .text{
+		position: absolute; 
+		left: 60px;
+		top: 50%;
+		transform: translatey(-50%);
+		padding: 10px;
+		border-radius: 4px;
+		color: #fff;
+		background: #111;
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.3s;
+	}
+	.sidebar.active .menu > ul > li > a .text::after{
+		content: "";
+		position: absolute;
+		left: -5px;
+		top: 25%;
+		width: 15px;
+		height: 15px;
+		background: #111;
+		transform: rotate(45deg);
+		z-index: -1;
+	}
+	.sidebar.active .menu > ul > li > a:hover .text{
+		left: 50px;
+		opacity: 1;
+		visibility: visible;
+	}
+	.sidebar.active .menu .dropdown{
+		position: absolute;
+		top: 0;
+		left: 20px;
+		width: 200px;
+		border-radius: 10px;
+		padding: 10px 20px;
+	
+	}*/
+}
+
+

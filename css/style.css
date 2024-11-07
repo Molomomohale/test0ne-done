@@ -1,0 +1,600 @@
+:root {
+    --green: #16a085;
+    --black: #444;
+    --light-color: #10d3c3;
+    --box-shadow: 0.5rem 0.5rem 0 rgba(22, 160, 133, 0.2);
+    --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+    --border: 0.2rem solid var(--green);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: auto;
+	font-family: sans-serif;
+}
+h1 {
+    text-align: center;
+}
+span {
+    color: var(--light-color);
+}
+.topmargin {
+    margin-top: 4rem;
+    padding: 10px;
+}
+.slide-container {
+    width: 100%;
+    padding: 4px;
+    background: floralwhite;
+}
+
+.slideshow-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    position: relative;
+    overflow: auto;
+    background: rgba(90, 231, 224, 0.096);
+}
+
+.slideshow-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    padding: 5px 5px;
+    grid-gap: 20px;
+}
+.slideshow-images{
+    background-image: url('../images/maliphofu.webp');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    
+}
+
+.mySlides {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mySlides:hover {
+    border: 2px solid #333;
+    padding: 10px;
+    transition: 0.4s;
+}
+.myspecies{
+  width: 100%;
+  margin-top: 20px;
+}
+.myspecies h1{
+    width: 50%;
+    position: relative;
+    background-color: #444;
+    padding: 10px;
+    color: #f2f2f2;
+    bottom: 15rem;
+    text-align: center;
+}
+.myspecies h2{
+    color: #555;
+    margin-left: 15px;
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.heading h2{
+    color: #fff;
+}
+
+.medication {
+    width: 100%;
+    margin-top: 10px;
+}
+.medication:hover {
+    border: 2px solid #333;
+    padding: 10px;
+    transition: 0.4s;
+}
+.about-us {
+    width: 100%;
+    margin: 10px auto;
+    padding: 5px;
+    border-left: 1px solid #333;
+    box-shadow: var(--box-shadow);
+}
+
+.about-us p{
+	font-size: 1.2rem;
+}
+
+.about-title h3 {
+    color: var(--green);
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+.about-title h4 {
+    color: var(--black);
+    font-size: 1.5rem;
+}
+.mission h3 {
+    color: var(--green);
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.slideshow-images {
+    text-align: center;
+    color: var(--green);
+}
+
+.mySlides img {
+    width: 100%;
+    margin: auto;
+    display: block;
+    height: 45vh;
+    border-radius: 7px;
+}
+.medication img {
+    width: 100%;
+    margin: auto;
+    display: block;
+    height: 45vh;
+    border-radius: 7px;
+}
+
+.btns {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    bottom: 0;
+    margin: 0.4rem 1px;
+}
+
+.contact {
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    margin-left: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #04aa6d;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.contact:hover {
+    background-color: var(--light-color);
+    transition: 0.4s;
+}
+.contact:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+a {
+    text-decoration: none;
+    color: #ddd;
+}
+.btns a {
+    text-decoration: none;
+    color: #ddd;
+}
+
+/**************slide show images**************************/
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: relative;
+    bottom: 40px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    background: #555;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        width: 30%;
+        font-size: 11px;
+    }
+
+}
+/********************end slide show***********************/
+/* Style for the search container */
+.search-container {
+    align-items: center;
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 1px 15px;
+    padding: 0.5rem;
+    text-align: center;
+}
+#search_term {
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+    outline: none;
+    flex: 1;
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Style for the search button */
+#search-btn {
+    border: none;
+    padding: 5px 15px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for the search button */
+#search-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Focus effect for the input field */
+#search_term:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/********Middle section page style*************************/
+.section {
+	width: 100%;
+	overflow: hidden; /* Hide the overflow content initially */
+	transition: height 0.5s ease; /* Smooth transition for height change */
+    padding: 10px 20px;
+    margin-top: 20px; /* Adjust for fixed nav height */
+    background-color: #f4f4f4;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid #ddd;
+    border-top: 2px solid #999;
+}
+.section h1 {
+    text-align: center;
+    margin-top: 1.8rem;
+}
+
+/***Animal category section***/
+.content-section {
+  width: 100%;
+  height: 48vh;
+  overflow: hidden; /* Hide the overflow content initially */
+  transition: height 0.5s ease; /* Smooth transition for height change */
+}
+
+.expanded {
+  height: auto; /* Expand to fit all content */
+}
+
+.content-section h3{
+	text-align: center;
+	
+}
+.content-section h3 a{
+	color: #000;
+}
+
+#view-more-btn {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/*****************start categories****************************/
+#expandable-section{
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 20px;
+    background-color: #888;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.a-categories{
+    margin: auto;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+.a-categories img{
+    width: 180px;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.category-results{
+    width: 100%;
+    padding: 10px 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+/*************************end categories******************/
+
+/*************end animal category section**************/
+
+#ourservices,
+#our-team {
+	background: #888;
+    height: 550px;
+}
+
+/****************services section******************/
+.cards {
+    width: 100%;
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.cards .card {
+    margin: auto;
+    text-align: center;
+    padding: 15px;
+    height: 27rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.cards .card p{
+	color: floralwhite;
+	font-size: 1.2rem;
+	text-align: left;
+}
+
+.cards .card h3 {
+    color: #fff;
+	font-size: 1.4rem;
+}
+.cards .card h4 {
+    font-style: italic;
+	color: #ddd;
+}
+
+/**************sick style***********/
+#our-team{
+	background: #888;
+}
+.sick-section{
+	width: 100%;
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-gap: 10px;
+	background: #888;
+}
+.sick-section .sick-content{
+	width: 100%;
+	margin: 0px auto;
+	padding: 0.5rem;
+	color: #fff;
+	height: auto;
+}
+.sick-section .sick-content p{
+	font-size: 1.4rem;
+}
+
+.sick-section .sick-content .sick-card{
+	width: 100%;
+	height: 20rem;
+	margin-bottom: 2rem;
+	border-bottom: 2px solid #ddd;
+}
+.sick-section .sick-content .sick-description{
+	width: 100%;
+}
+.sick-section .sick-content .sick-description h3{
+	color: #eee;
+	font-size: 2rem;
+	font-weight: 600;
+}
+.sick-section .sick-card img{
+	width: 100%;
+	height: 16rem;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	text-align: center;
+	background-size: cover;
+}
+#our-team{
+	overflow: auto;
+}
+
+/**************sick style***********/
+
+/**********************visit code**************************/
+.visit-count {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+.visit-count ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.visit-count li {
+    margin-bottom: 5px;
+}
+/**********************end visit code***********************/
+
+.results {
+    width: 90%;
+    padding: 10px 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin: auto auto 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+.results-box{
+    text-align: center;
+    border-radius: 7px;
+}
+.results-box img{
+    margin: auto;
+    display: block;
+    align-content: center;
+    align-items: center;
+}
+.results-box img:hover{
+    border: 1px solid #111;
+    padding: 6px;
+    transition: 0.4s;
+    background: #97f49a;
+    border-radius: 7px;
+}
+
+
+
+
+/***************small screen resolutions******************/
+@media(max-width:991px) {
+    .main-container {
+        margin-top: 40px;  
+    }
+    
+    .top-section h1 {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .myspecies img{
+        width: 100%;
+        height: 8rem;
+        margin: auto;
+    }
+    .myspecies h1{
+        width: 80%;
+        position: relative;
+        background-color: #444;
+        padding: 6px;
+        font-size: 14px;
+        color: #f2f2f2;
+        bottom: 8rem;
+        text-align: center;
+    }
+    .myspecies h2{
+        font-size: 28px;
+    }
+	
+	.content-section {
+		height: auto;
+	}
+    
+    #ourservices,
+    #our-team,
+    #home {
+        height: auto;
+    }
+    #categories{
+        height: auto;
+    }
+    .products .product-box img{
+        width: 100%;
+        height: 40vh;
+        display: none;
+    }
+    .products .product-box p{
+        display: none;
+    }
+
+    .btns{
+        display: flex;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .login_admin {
+        display: inline-block;
+        padding: 0.2rem 0.8rem;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .contact{
+        display: inline-block;
+        padding: 0.2rem 0.8rem;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    
+    .cards {
+        grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+    }
+
+    .cards, .results {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .cards .card{
+        width: 100%;
+        height: auto;
+    }
+    .slideshow-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+        height: auto;
+        margin-top: 45px;
+        /*z-index: -1;*/
+    }
+    .slide-container{
+        width: 100%;
+        height: auto;
+        border: 2px solid red;
+    }
+    
+    .slideshow-content {
+        width: 95%;
+        display: grid;
+       grid-template-columns: repeat(1, 1fr);
+       height: auto;
+    }
+
+    .mySlides {
+        width: 95%;
+        height: 35vh;
+    }
+
+    .mySlides img {
+        width: 95%;
+        height: 35vh;
+    }
+    .medication{
+        width: 95%;
+        height: 35vh;
+    }
+    .medication img{
+        width: 95%;
+        height: 35vh; 
+    }
+
+    #search_term {
+        width: 60%;
+    }
+    .about-us{
+        width: 90%;
+        height: auto;
+    }
+    .section{
+        width: 97%;
+    }
+}

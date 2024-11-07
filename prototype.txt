@@ -1,0 +1,1006 @@
+To design a prototype for the **Maliphofu Farm Feeds** system, here’s a basic structure outlining the system’s key components and how they could be integrated into the interface:
+
+### 1. **System Pages**
+   - **Home Page**: Introduction to the system and what it offers (feeds, medications, animals, etc.).
+   - **Animals Page**: Displays a list of recorded animals, with options to add, update, or delete animals.
+   - **Medications Page**: Lists available medications for each animal, with options to add, edit, or remove medication.
+   - **Feeds Page**: Displays available animal feeds, with the ability to add, update, and delete feed items.
+   - **Admin Dashboard**: For admins to manage the system (add animals, medications, and feeds).
+   - **User Profile**: For admin or employee to view and edit their information.
+   - **Reports**: View reports on feeds used, medications administered, and animal records.
+
+### 2. **Database Design**
+   - **Tables**:
+     - `animals`: stores animal information (name, type, etc.).
+     - `medications`: stores medication details for animals.
+     - `feeds`: stores feed information.
+     - `admin`: stores admin details (login credentials, contact, etc.).
+     - `transactions`: logs interactions (when medication or feed was given to an animal).
+
+### 3. **Page Wireframes/Structure**
+
+**1. Navbar**
+   - Fixed side navigation with sections: Home, Animals, Medications, Feeds, Admin Dashboard, Reports, and Profile.
+
+**2. Animals Page**
+   - **Fields**: Name, Type, Age, etc.
+   - **Actions**: Add New Animal (form submission), Edit, Delete.
+   - **Table View**: List of all animals with basic details.
+
+**3. Feeds Page**
+   - **Fields**: Feed Name, Feed Type, Animal Type, Stock Amount, etc.
+   - **Actions**: Add, Edit, Delete.
+   - **Table View**: List of feeds with stock status.
+
+**4. Medications Page**
+   - **Fields**: Medication Name, Animal Type, Dosage, etc.
+   - **Actions**: Add, Edit, Delete.
+   - **Table View**: List of medications with their relevant animals and dosage instructions.
+
+### 4. **Prototype Design**
+
+I’ll outline the sections in a basic HTML layout structure, but it will need CSS for responsiveness.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maliphofu Farm Feeds</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Side Navigation Bar -->
+    <nav id="sidebar">
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="animals.php">Animals</a></li>
+            <li><a href="feeds.php">Feeds</a></li>
+            <li><a href="medications.php">Medications</a></li>
+            <li><a href="admin.php">Admin Dashboard</a></li>
+            <li><a href="reports.php">Reports</a></li>
+            <li><a href="profile.php">Profile</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div id="main-content">
+        <!-- Home Page Content -->
+        <section id="home">
+            <h1>Welcome to Maliphofu Farm Feeds</h1>
+            <p>Track and manage animal feeds, medications, and records with ease.</p>
+        </section>
+
+        <!-- Animals Page Content -->
+        <section id="animals">
+            <h2>Animals</h2>
+            <button>Add New Animal</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Age</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cow</td>
+                        <td>Cattle</td>
+                        <td>5 years</td>
+                        <td>Edit | Delete</td>
+                    </tr>
+                    <!-- More animals -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Feeds Page Content -->
+        <section id="feeds">
+            <h2>Feeds</h2>
+            <button>Add New Feed</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feed Name</th>
+                        <th>Animal Type</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hay</td>
+                        <td>Cattle</td>
+                        <td>100 bales</td>
+                        <td>Edit | Delete</td>
+                    </tr>
+                    <!-- More feeds -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Medications Page Content -->
+        <section id="medications">
+            <h2>Medications</h2>
+            <button>Add New Medication</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medication Name</th>
+                        <th>Animal Type</th>
+                        <th>Dosage</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Antibiotic</td>
+                        <td>Cattle</td>
+                        <td>50mg</td>
+                        <td>Edit | Delete</td>
+                    </tr>
+                    <!-- More medications -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+### 5. **Next Steps**
+   - Implement **CSS** for layout and responsive design.
+   - Integrate **PHP** for back-end processing (e.g., adding, editing, deleting animals, feeds, and medications).
+   - Use **JavaScript** for front-end validation and interaction.
+   - Set up a **MySQL** database to store animal, medication, and feed data.
+
+Would you like me to assist with specific parts of the system development, like database setup or PHP scripts?
+
+/**************************************************************************************************************/
+/**************************************************************************************************************/
+Here’s how you can implement **CSS** for styling and responsiveness, and **JavaScript** for handling actions like adding new items dynamically in the "Maliphofu Farm Feeds" system.
+
+### 1. **CSS (style.css)**
+
+```css
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Sidebar Navigation */
+#sidebar {
+    width: 200px;
+    background-color: #2b2b2b;
+    min-height: 100vh;
+    padding: 20px 0;
+    position: fixed;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sidebar ul li {
+    padding: 10px 20px;
+}
+
+#sidebar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+}
+
+#sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+/* Main Content Area */
+#main-content {
+    margin-left: 220px;
+    padding: 20px;
+    width: calc(100% - 220px);
+    background-color: #f8f8f8;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table thead {
+    background-color: #333;
+    color: white;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: #ddd;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    #sidebar {
+        width: 100px;
+        position: relative;
+    }
+
+    #main-content {
+        margin-left: 100px;
+        width: calc(100% - 100px);
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+    }
+
+    table td {
+        padding: 10px;
+        text-align: right;
+        position: relative;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+```
+
+### 2. **JavaScript (script.js)**
+
+Here, we will add basic functionality for dynamically adding new rows in the table using JavaScript for animals, feeds, and medications.
+
+```javascript
+// Function to Add New Animal
+function addNewAnimal() {
+    const table = document.querySelector("#animals table tbody");
+    const name = prompt("Enter Animal Name:");
+    const type = prompt("Enter Animal Type:");
+    const age = prompt("Enter Animal Age:");
+
+    if (name && type && age) {
+        const newRow = `
+            <tr>
+                <td>${name}</td>
+                <td>${type}</td>
+                <td>${age}</td>
+                <td><button onclick="editRow(this)">Edit</button> | <button onclick="deleteRow(this)">Delete</button></td>
+            </tr>
+        `;
+        table.innerHTML += newRow;
+    }
+}
+
+// Function to Edit Row
+function editRow(button) {
+    const row = button.closest("tr");
+    const name = prompt("Update Animal Name:", row.cells[0].textContent);
+    const type = prompt("Update Animal Type:", row.cells[1].textContent);
+    const age = prompt("Update Animal Age:", row.cells[2].textContent);
+
+    if (name && type && age) {
+        row.cells[0].textContent = name;
+        row.cells[1].textContent = type;
+        row.cells[2].textContent = age;
+    }
+}
+
+// Function to Delete Row
+function deleteRow(button) {
+    const row = button.closest("tr");
+    row.remove();
+}
+
+// Event Listeners for Adding New Items
+document.querySelector("#animals button").addEventListener("click", addNewAnimal);
+```
+
+### 3. **Linking Everything Together**
+
+Make sure you link the **CSS** and **JavaScript** files in your HTML as follows:
+
+```html
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+```
+
+### 4. **Explanation of Key Features**
+
+- **CSS**: The sidebar navigation is fixed on the left, while the main content area takes up the remaining space. The layout is fully responsive, so the tables adjust on smaller screens.
+- **JavaScript**: Simple functions to allow adding, editing, and deleting items (animals, feeds, medications) dynamically.
+
+### 5. **Next Steps**
+- You can replicate the **addNewAnimal** function for the Feeds and Medications sections.
+- Extend the JavaScript for more complex functionalities like saving data to a backend or form validation.
+
+Would you like to move forward with database integration or add more complex JavaScript features?
+
+/******************************************************************************************************/
+/******************************************************************************************************/
+Here’s a **SQL script** that creates the tables for the **Maliphofu Farm Feeds** system based on the database design.
+
+### Tables:
+- **`animals`**: Stores animal details.
+- **`feeds`**: Stores feed information.
+- **`medications`**: Stores medication details.
+- **`admin`**: Stores admin details.
+- **`transactions`**: Logs when a feed or medication is used for an animal.
+
+### SQL Script
+
+```sql
+-- Create the database
+CREATE DATABASE IF NOT EXISTS maliphofu_farm_feeds;
+USE maliphofu_farm_feeds;
+
+-- Table: admin
+CREATE TABLE IF NOT EXISTS admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    email VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table: animals
+CREATE TABLE IF NOT EXISTS animals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    animal_name VARCHAR(50) NOT NULL,
+    animal_type VARCHAR(50) NOT NULL,
+    age INT,
+    description TEXT,
+    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table: feeds
+CREATE TABLE IF NOT EXISTS feeds (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    feed_name VARCHAR(50) NOT NULL,
+    feed_type VARCHAR(50) NOT NULL,
+    animal_type VARCHAR(50) NOT NULL,
+    stock INT DEFAULT 0,
+    price DECIMAL(10,2),
+    description TEXT,
+    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table: medications
+CREATE TABLE IF NOT EXISTS medications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    medication_name VARCHAR(100) NOT NULL,
+    animal_type VARCHAR(50) NOT NULL,
+    dosage VARCHAR(50) NOT NULL,
+    description TEXT,
+    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table: transactions (logs of feeds/medications given to animals)
+CREATE TABLE IF NOT EXISTS transactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    animal_id INT NOT NULL,
+    feed_id INT NULL,
+    medication_id INT NULL,
+    quantity INT,
+    transaction_type ENUM('feed', 'medication') NOT NULL,
+    recorded_by INT NOT NULL,
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (animal_id) REFERENCES animals(id) ON DELETE CASCADE,
+    FOREIGN KEY (feed_id) REFERENCES feeds(id) ON DELETE SET NULL,
+    FOREIGN KEY (medication_id) REFERENCES medications(id) ON DELETE SET NULL,
+    FOREIGN KEY (recorded_by) REFERENCES admin(id) ON DELETE CASCADE
+);
+```
+
+### Explanation:
+1. **`admin`** table:
+   - Stores the login details of administrators (username, password).
+   - This table can be extended for managing employees.
+
+2. **`animals`** table:
+   - Stores the animal records, including name, type, age, and description.
+
+3. **`feeds`** table:
+   - Stores information about available feeds, including feed name, type, stock, and price.
+   - Feed type refers to the kind of feed (e.g., hay, grain).
+
+4. **`medications`** table:
+   - Stores medications used for the animals, including the name, animal type, dosage, and description.
+
+5. **`transactions`** table:
+   - Logs whenever a feed or medication is administered to an animal.
+   - Uses `transaction_type` to distinguish between feeds and medications.
+   - Links to the `admin` table to keep track of which admin recorded the transaction.
+
+### Next Steps:
+- Use PHP to interact with this database, such as adding animals, feeds, medications, or recording transactions.
+- Set up login functionality for the admin.
+
+Would you like to proceed with PHP scripts to insert, update, or retrieve data from these tables?
+/****************************************************************************************************/
+/****************************************************************************************************/
+Here’s how you can create **HTML forms** for each table and their corresponding **PHP insert scripts** to add data into the database.
+
+### 1. **HTML Forms**
+
+#### 1.1. **Form for Adding an Animal**
+```html
+<!-- animals_form.html -->
+<form action="insert_animal.php" method="POST">
+    <label for="animal_name">Animal Name:</label>
+    <input type="text" id="animal_name" name="animal_name" required><br>
+
+    <label for="animal_type">Animal Type:</label>
+    <input type="text" id="animal_type" name="animal_type" required><br>
+
+    <label for="age">Age (years):</label>
+    <input type="number" id="age" name="age"><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"></textarea><br>
+
+    <input type="submit" value="Add Animal">
+</form>
+```
+
+#### 1.2. **Form for Adding a Feed**
+```html
+<!-- feeds_form.html -->
+<form action="insert_feed.php" method="POST">
+    <label for="feed_name">Feed Name:</label>
+    <input type="text" id="feed_name" name="feed_name" required><br>
+
+    <label for="feed_type">Feed Type:</label>
+    <input type="text" id="feed_type" name="feed_type" required><br>
+
+    <label for="animal_type">Animal Type:</label>
+    <input type="text" id="animal_type" name="animal_type" required><br>
+
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" name="stock" required><br>
+
+    <label for="price">Price (per unit):</label>
+    <input type="text" id="price" name="price" required><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"></textarea><br>
+
+    <input type="submit" value="Add Feed">
+</form>
+```
+
+#### 1.3. **Form for Adding a Medication**
+```html
+<!-- medications_form.html -->
+<form action="insert_medication.php" method="POST">
+    <label for="medication_name">Medication Name:</label>
+    <input type="text" id="medication_name" name="medication_name" required><br>
+
+    <label for="animal_type">Animal Type:</label>
+    <input type="text" id="animal_type" name="animal_type" required><br>
+
+    <label for="dosage">Dosage:</label>
+    <input type="text" id="dosage" name="dosage" required><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"></textarea><br>
+
+    <input type="submit" value="Add Medication">
+</form>
+```
+
+#### 1.4. **Form for Adding an Admin**
+```html
+<!-- admin_form.html -->
+<form action="insert_admin.php" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone"><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br>
+
+    <input type="submit" value="Add Admin">
+</form>
+```
+
+### 2. **PHP Insert Scripts**
+
+#### 2.1. **PHP Script to Insert an Animal (`insert_animal.php`)**
+```php
+<?php
+// Database connection
+$mysqli = new mysqli("localhost", "root", "", "maliphofu_farm_feeds");
+
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+
+// Get form data
+$animal_name = $_POST['animal_name'];
+$animal_type = $_POST['animal_type'];
+$age = $_POST['age'];
+$description = $_POST['description'];
+
+// Prepare and execute insert statement
+$stmt = $mysqli->prepare("INSERT INTO animals (animal_name, animal_type, age, description) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssis", $animal_name, $animal_type, $age, $description);
+
+if ($stmt->execute()) {
+    echo "Animal added successfully!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+$mysqli->close();
+?>
+```
+
+#### 2.2. **PHP Script to Insert a Feed (`insert_feed.php`)**
+```php
+<?php
+// Database connection
+$mysqli = new mysqli("localhost", "root", "", "maliphofu_farm_feeds");
+
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+
+// Get form data
+$feed_name = $_POST['feed_name'];
+$feed_type = $_POST['feed_type'];
+$animal_type = $_POST['animal_type'];
+$stock = $_POST['stock'];
+$price = $_POST['price'];
+$description = $_POST['description'];
+
+// Prepare and execute insert statement
+$stmt = $mysqli->prepare("INSERT INTO feeds (feed_name, feed_type, animal_type, stock, price, description) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssids", $feed_name, $feed_type, $animal_type, $stock, $price, $description);
+
+if ($stmt->execute()) {
+    echo "Feed added successfully!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+$mysqli->close();
+?>
+```
+
+#### 2.3. **PHP Script to Insert a Medication (`insert_medication.php`)**
+```php
+<?php
+// Database connection
+$mysqli = new mysqli("localhost", "root", "", "maliphofu_farm_feeds");
+
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+
+// Get form data
+$medication_name = $_POST['medication_name'];
+$animal_type = $_POST['animal_type'];
+$dosage = $_POST['dosage'];
+$description = $_POST['description'];
+
+// Prepare and execute insert statement
+$stmt = $mysqli->prepare("INSERT INTO medications (medication_name, animal_type, dosage, description) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $medication_name, $animal_type, $dosage, $description);
+
+if ($stmt->execute()) {
+    echo "Medication added successfully!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+$mysqli->close();
+?>
+```
+
+#### 2.4. **PHP Script to Insert an Admin (`insert_admin.php`)**
+```php
+<?php
+// Database connection
+$mysqli = new mysqli("localhost", "root", "", "maliphofu_farm_feeds");
+
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+
+// Get form data
+$username = $_POST['username'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password for security
+$phone = $_POST['phone'];
+$email = $_POST['email'];
+
+// Prepare and execute insert statement
+$stmt = $mysqli->prepare("INSERT INTO admin (username, password, phone, email) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $username, $password, $phone, $email);
+
+if ($stmt->execute()) {
+    echo "Admin added successfully!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+$mysqli->close();
+?>
+```
+
+### 3. **Next Steps**
+1. **Validation**: Add form validation using either JavaScript (client-side) or additional PHP checks (server-side).
+2. **Security**: Always sanitize inputs to prevent SQL injection attacks, e.g., using `mysqli_real_escape_string()`.
+3. **Redirect after submission**: You can redirect users to a confirmation page after successful submission using `header('Location: success_page.php');`.
+
+Would you like to add validation or any additional functionality next?
+
+/***********************************************************************************/
+/***********************************************************************************/
+Let's create the necessary **system pages** and implement the functionality to **fetch and display data** for animals, medications, and feeds. I'll structure the pages as follows:
+
+1. **Animal Page** - Fetch and display animal data.
+2. **Medication Page** - Fetch and display medication data.
+3. **Feeds Page** - Fetch and display feed data.
+4. **Admin Page** - Admin management (insertion only for now).
+
+Each page will contain:
+- A form to add new records.
+- A table to display the data fetched from the corresponding database table.
+
+### 1. **Animal Page (animals.php)**
+
+```php
+<?php
+// Database connection
+$mysqli = new mysqli("localhost", "root", "", "maliphofu_farm_feeds");
+
+// Fetch animals data
+$query = "SELECT * FROM animals";
+$result = $mysqli->query($query);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animals</title>
+</head>
+<body>
+    <h1>Animal Management</h1>
+
+    <!-- Form to Add New Animal -->
+    <form action="insert_animal.php" method="POST">
+        <label for="animal_name">Animal Name:</label>
+        <input type="text" id="animal_name" name="animal_name" required><br>
+
+        <label for="animal_type">Animal Type:</label>
+        <input type="text" id="animal_type" name="animal_type" required><br>
+
+        <label for="age">Age (years):</label>
+        <input type="number" id="age" name="age"><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br>
+
+        <input type="submit" value="Add Animal">
+    </form>
+
+    <!-- Display Animals Table -->
+    <h2>Animals List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Animal Name</th>
+                <th>Animal Type</th>
+                <th>Age</th>
+                <th>Description</th>
+                <th>Recorded At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td><?= $row['id']; ?></td>
+                <td><?= $row['animal_name']; ?></td>
+                <td><?= $row['animal_type']; ?></td>
+                <td><?= $row['age']; ?></td>
+                <td><?= $row['description']; ?></td>
+                <td><?= $row['recorded_at']; ?></td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</body>
+</html>
+```
+
+### 2. **Medication Page (medications.php)**
+
+```php
+<?php
+// Database connection
+$mysqli = new mysqli("localhost", "root", "", "maliphofu_farm_feeds");
+
+// Fetch medications data
+$query = "SELECT * FROM medications";
+$result = $mysqli->query($query);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medications</title>
+</head>
+<body>
+    <h1>Medication Management</h1>
+
+    <!-- Form to Add New Medication -->
+    <form action="insert_medication.php" method="POST">
+        <label for="medication_name">Medication Name:</label>
+        <input type="text" id="medication_name" name="medication_name" required><br>
+
+        <label for="animal_type">Animal Type:</label>
+        <input type="text" id="animal_type" name="animal_type" required><br>
+
+        <label for="dosage">Dosage:</label>
+        <input type="text" id="dosage" name="dosage" required><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br>
+
+        <input type="submit" value="Add Medication">
+    </form>
+
+    <!-- Display Medications Table -->
+    <h2>Medications List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Medication Name</th>
+                <th>Animal Type</th>
+                <th>Dosage</th>
+                <th>Description</th>
+                <th>Recorded At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td><?= $row['id']; ?></td>
+                <td><?= $row['medication_name']; ?></td>
+                <td><?= $row['animal_type']; ?></td>
+                <td><?= $row['dosage']; ?></td>
+                <td><?= $row['description']; ?></td>
+                <td><?= $row['recorded_at']; ?></td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</body>
+</html>
+```
+
+### 3. **Feeds Page (feeds.php)**
+
+```php
+<?php
+// Database connection
+$mysqli = new mysqli("localhost", "root", "", "maliphofu_farm_feeds");
+
+// Fetch feeds data
+$query = "SELECT * FROM feeds";
+$result = $mysqli->query($query);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feeds</title>
+</head>
+<body>
+    <h1>Feed Management</h1>
+
+    <!-- Form to Add New Feed -->
+    <form action="insert_feed.php" method="POST">
+        <label for="feed_name">Feed Name:</label>
+        <input type="text" id="feed_name" name="feed_name" required><br>
+
+        <label for="feed_type">Feed Type:</label>
+        <input type="text" id="feed_type" name="feed_type" required><br>
+
+        <label for="animal_type">Animal Type:</label>
+        <input type="text" id="animal_type" name="animal_type" required><br>
+
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" required><br>
+
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" required><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br>
+
+        <input type="submit" value="Add Feed">
+    </form>
+
+    <!-- Display Feeds Table -->
+    <h2>Feeds List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Feed Name</th>
+                <th>Feed Type</th>
+                <th>Animal Type</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Recorded At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td><?= $row['id']; ?></td>
+                <td><?= $row['feed_name']; ?></td>
+                <td><?= $row['feed_type']; ?></td>
+                <td><?= $row['animal_type']; ?></td>
+                <td><?= $row['stock']; ?></td>
+                <td><?= $row['price']; ?></td>
+                <td><?= $row['description']; ?></td>
+                <td><?= $row['recorded_at']; ?></td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</body>
+</html>
+```
+
+### 4. **Admin Page (admin.php)**
+
+```php
+<?php
+// Database connection
+$mysqli = new mysqli("localhost", "root", "", "maliphofu_farm_feeds");
+
+// Fetch admin data
+$query = "SELECT * FROM admin";
+$result = $mysqli->query($query);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management</title>
+</head>
+<body>
+    <h1>Admin Management</h1>
+
+    <!-- Form to Add New Admin -->
+    <form action="insert_admin.php" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+
+        <input type="submit" value="Add Admin">
+    </form>
+
+    <!-- Display Admins Table -->
+    <h2>
+
+Admin List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Recorded At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td><?= $row['id']; ?></td>
+                <td><?= $row['username']; ?></td>
+                <td><?= $row['phone']; ?></td>
+                <td><?= $row['email']; ?></td>
+                <td><?= $row['recorded_at']; ?></td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</body>
+</html>
+```
+
+### **Next Steps**
+1. Ensure all forms submit correctly to their respective PHP insert scripts (`insert_animal.php`, `insert_feed.php`, etc.).
+2. Make sure that the database connection settings (username, password, database name) match your configuration.
+
+Would you like to add any additional features or apply CSS styling to these pages?
